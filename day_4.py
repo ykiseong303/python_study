@@ -128,18 +128,30 @@
 범위 : 파트9. 비트단위 논리연산
 '''
 # 직사각형을 만드는데 4개 중 3개의 좌표가 주어졌을 때 나머지 한개를 구하기
-c = [[1,4],[3,10],[3,4]]
-x = []
-# for i in range(2) : 
-#     if (c[0][i]^c[1][i]) == 0 : 
-#         x.append(c[2][i])
-#     elif (c[0][i]^c[2][i]) == 0 : 
-#         x.append(c[1][i])
-#     elif (c[1][i]^c[2][i]) == 0 : 
-#         x.append(c[0][i])
+# c = [[1,4],[3,10],[3,4]]
+# x = []
+# # for i in range(2) : 
+# #     if (c[0][i]^c[1][i]) == 0 : 
+# #         x.append(c[2][i])
+# #     elif (c[0][i]^c[2][i]) == 0 : 
+# #         x.append(c[1][i])
+# #     elif (c[1][i]^c[2][i]) == 0 : 
+# #         x.append(c[0][i])
+# # print(x)
+
+# ## 같은 수끼리 XOR연산하면 값은 0이 됨을 적용(연산의 순서상관없이 같은수끼리 XOR되면 0) > 한번만 나온 숫자 찾기 
+# x.append(c[0][0]^c[1][0]^c[2][0])
+# x.append(c[0][1]^c[1][1]^c[2][1])
 # print(x)
 
-## 같은 수끼리 XOR연산하면 값은 0이 됨을 적용(연산의 순서상관없이 같은수끼리 XOR되면 0) > 한번만 나온 숫자 찾기 
-x.append(c[0][0]^c[1][0]^c[2][0])
-x.append(c[0][1]^c[1][1]^c[2][1])
-print(x)
+# 같은 수가 두번 나오는 경우 1번만 출력되게 하기 
+arr = [1,1,2,2,3,0,1]
+
+pick = []
+pick.append(arr[0])
+
+for i in range(1,len(arr)) : 
+    if pick[len(pick)-1] == arr[i] : # 비교를 위한 인덱스의 위치는 채워나갈 리스트(pick)의 마지막 항이므로 최대 길이 -1
+        continue 
+    pick.append(arr[i])
+print(pick)
